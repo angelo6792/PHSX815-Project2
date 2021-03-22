@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     random = Random(seed)
 
-    # default dice roll  probability for "1"
+    # default dice roll  probability with Rayleigh distribution
     prob1 = Fraction(1,6)
     prob2 = Fraction(1,6)
     prob3 = Fraction(1,6)

@@ -51,6 +51,7 @@ RollsH1 = np.loadtxt(H1)
 print(len(RollsH0),len(RollsH1))
 a0 = []
 a1 = []
+
 prob1 = Fraction(1,6)
 prob2 = Fraction(1,6)
 prob3 = Fraction(1,6)
