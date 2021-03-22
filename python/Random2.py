@@ -43,7 +43,7 @@ class Random:
     def rand(self):
         return 5.42101086242752217E-20 * self.int64()
 
-    #dice roll distribution
+    # dice roll distribution
     def Diceroll(self, p1=Fraction(1,6), p2=Fraction(1,6), p3=Fraction(1,6), p4=Fraction(1,6), p5=Fraction(1,6), p6=Fraction(1,6)):
         if p1 < 0. or p1 > 1. or p2 < 0. or p2 > 1. or p3 < 0. or p3 > 1. or p4 < 0. or p4 > 1. or p5 < 0. or p5 > 1. or p6 < 0. or p6 > 1.:
             return 1
@@ -62,4 +62,12 @@ class Random:
             return 5
         elif R > (p1+p2+p3+p4+p5) and R < (p1+p2+p3+p4+p5+p6):
             return 6
-        
+
+    # rayleigh distribution
+    def Rayleigh(self):
+
+         R = self.rand()
+
+         X = (-2*math.log(R))**(1/2)
+
+         return X

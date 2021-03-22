@@ -10,22 +10,38 @@ from Random2 import Random
 
 # main function for our dice roll Python code
 if __name__ == "__main__":
-    # if the user includes the flag -h or --help print the options
     if '-h' in sys.argv or '--help' in sys.argv:
         print ("Usage: %s [-seed number]" % sys.argv[0])
         print
         sys.exit(1)
 
+
     # default seed
     seed = 5555
+    if '-seed' in sys.argv:
+        p = sys.argv.index('-seed')
+        seed = sys.argv[p+1]
+
+    random = Random(seed)
 
     # default dice roll  probability for "1"
     prob1 = Fraction(1,6)
     prob2 = Fraction(1,6)
     prob3 = Fraction(1,6)
-    prob4 = Fraction(1,6)
-    prob5 = Fraction(1,6)
-    prob6 = Fraction(1,6)
+    prob4 = random.Rayleigh()
+    prob5 = random.Rayleigh()
+    prob6 = random.Rayleigh()
+    total = prob1+prob2+prob3+prob4+prob5+prob6
+    prob1 = prob1 / total
+    prob2 = prob2 / total
+    prob3 = prob3 / total
+    prob4 = prob4 / total
+    prob5 = prob5 / total
+    prob6 = prob6 / total
+
+
+
+
 
     # default number of rolls (per experiment)
     Nroll = 1
@@ -37,9 +53,6 @@ if __name__ == "__main__":
     doOutputFile = False
 
     # read the user-provided seed from the command line and change dice probabilities (if there)
-    if '-seed' in sys.argv:
-        p = sys.argv.index('-seed')
-        seed = sys.argv[p+1]
     if '-prob1' in sys.argv:
         p = sys.argv.index('-prob1')
         ptemp = float(sys.argv[p+1])
@@ -85,6 +98,14 @@ if __name__ == "__main__":
         OutputFileName = sys.argv[p+1]
         doOutputFile = True
 
+
+    print(prob1)
+    print(prob2)
+    print(prob3)
+    print(prob4)
+    print(prob5)
+    print(prob6)
+
     # class instance of our Random class using seed
     random = Random(seed)
 
@@ -100,3 +121,4 @@ if __name__ == "__main__":
             for t in range(0,Nroll):
                 print(random.Diceroll(prob1,prob2,prob3,prob4,prob5,prob6), end=' ')
             print(" ")
+
